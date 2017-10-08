@@ -1,4 +1,4 @@
-package main;
+package kasatkin.andrew.spring.boot.demo.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

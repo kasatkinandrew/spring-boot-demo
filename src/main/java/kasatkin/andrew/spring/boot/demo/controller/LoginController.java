@@ -1,7 +1,6 @@
-package controller;
+package kasatkin.andrew.spring.boot.demo.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
