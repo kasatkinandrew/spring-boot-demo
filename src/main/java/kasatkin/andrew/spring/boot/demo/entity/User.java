@@ -19,31 +19,40 @@ public class User {
     @Column(name = "user_id")
     private int user_id;
 
-    @NotNull
-    @Pattern(regexp = "^[a-zA-Z0-9_-]{3,16}$")
-    @Column(name = "username", unique = true)
+//    @NotNull
+//    @Pattern(regexp = "^[a-zA-Z0-9_-]{3,16}$")
+//    @Column(name = "username", unique = true)
     private String username;
 
-    @NotNull
-    @Size(min = 6, max = 30)
-    @Column(name = "password")
+//    @NotNull
+//    @Size(min = 6, max = 30)
+//    @Column(name = "password")
     private String password;
 
-    @NotNull
-    @Email
-    @Column(name = "email", unique = true)
+
+//    @Email
+//    @Column(name = "email", unique = true)
     private String email;
 
-    @NotNull
-    @Size(min = 2, max = 20)
-    @Column(name = "firstname")
+//    @NotNull
+//    @Size(min = 2, max = 20)
+//    @Column(name = "firstname")
     private String firstname;
 
-    @NotNull
-    @Size(min = 2, max = 20)
-    @Column(name = "lastname")
+//    @NotNull
+//    @Size(min = 2, max = 20)
+//    @Column(name = "lastname")
     private String lastname;
 
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public int getUser_id() {
         return user_id;

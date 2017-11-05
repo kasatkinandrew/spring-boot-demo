@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Simple Blog Application</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Welcome to Simple Blog Application</h1>
+        <h1>Please <a th:href="@{/login}">Log In</a>
+            or <a th:href="@{/register}">Register</a>
+            if you want to have access to all functional of this website</h1>
+        <h2> Admin? Visit <a th:href="@{/admin}">Admin page</a></h2>
+        <h2> User? Visit <a th:href="@{/user}">User page</a></h2>
+        <h2> Anon? Visit <a th:href="@{/about}">Anon page</a></h2>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
