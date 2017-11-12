@@ -1,20 +1,24 @@
 logging:
+
   level:
     org.springframework.web: debug
 
 spring:
+
   datasource:
     url: jdbc:mysql://localhost:3306/testdb
     username: root
     password: 1111
+
+  output:
+      ansi:
+        enabled: always
 
   jpa:
     hibernate:
       ddl-auto: update
 
 
-
-      #============================= SQL DATABASE ==================#
 
 
 

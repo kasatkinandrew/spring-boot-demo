@@ -58,21 +58,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/", "/login", "/register", "/about").permitAll()
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("USER")
-                .and()
-                .formLogin()
-                .loginPage("/login").failureUrl("/login?error")
-                .usernameParameter("username").passwordParameter("password")
-                .permitAll()
-                .and()
-                .logout().logoutSuccessUrl("/login?logout")
-                .permitAll()
-                .and()
-                .exceptionHandling().accessDeniedHandler(myAccessDeniedHandler);
+            http.csrf().disable()
+                    .authorizeRequests()
+                    .antMatchers("/", "/login", "/register", "/about").permitAll()
+                    .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                    .antMatchers("/user/**").hasAnyRole("USER")
+                    .and()
+                    .formLogin()
+                    .loginPage("/login").failureUrl("/login?error")
+                    .usernameParameter("username").passwordParameter("password")
+                    .permitAll()
+                    .and()
+                    .logout().logoutSuccessUrl("/login?logout")
+                    .permitAll()
+                    .and()
+                    .exceptionHandling().accessDeniedHandler(myAccessDeniedHandler);
 
 //        http.authorizeRequests()
 //                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
