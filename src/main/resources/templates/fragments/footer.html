@@ -12,7 +12,10 @@
             <span sec:authorize="isAuthenticated()">
                 | Logged user: <span sec:authentication="name"></span> |
                 Roles: <span sec:authentication="principal.authorities"></span> |
-                <a th:href="@{/logout}">Sign Out</a>
+                <!--<a th:action="@{/logout}">Sign Out</a>-->
+                <!--<form th:action="@{/logout}" method="post">-->
+                    <!--<input type="submit" value="Sign Out"/>-->
+                <!--</form>-->
             </span>
 
             <script type="text/javascript"

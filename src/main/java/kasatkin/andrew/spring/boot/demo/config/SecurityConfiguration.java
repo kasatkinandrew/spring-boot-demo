@@ -37,42 +37,42 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private AccessDeniedHandler myAccessDeniedHandler;
 
+    @Value("${spring.queries.users-query}")
+    private String usersQuery;
+
+    @Value("${spring.queries.auth-query}")
+    private String authQuery;
+
+
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
 
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery(
-                        "select username, password, enabled from users where username=?")
-                .authoritiesByUsernameQuery(
-                        "select username, role from user_roles where username=?");
+        auth
+                .jdbcAuthentication()
+                .dataSource(dataSource)
+                .usersByUsernameQuery(usersQuery)
+                .authoritiesByUsernameQuery(authQuery);
 
-
-
-//        auth.inMemoryAuthentication()
-//                .withUser("user").password("1111").roles("USER")
-//                .and()
-//                .withUser("admin").password("password").roles("ADMIN");
     }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-            http.csrf().disable()
-                    .authorizeRequests()
-                    .antMatchers("/", "/login", "/register", "/about").permitAll()
-                    .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                    .antMatchers("/user/**").hasAnyRole("USER")
-                    .and()
-                    .formLogin()
-                    .loginPage("/login").failureUrl("/login?error")
-                    .usernameParameter("username").passwordParameter("password")
-                    .permitAll()
-                    .and()
-                    .logout().logoutSuccessUrl("/login?logout")
-                    .permitAll()
-                    .and()
-                    .exceptionHandling().accessDeniedHandler(myAccessDeniedHandler);
+        http
+                .authorizeRequests()
+                .antMatchers("/", "/login", "/register", "/about").permitAll()
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/user/**").hasAnyRole("USER")
+                .and()
+                .formLogin()
+                .loginPage("/login").failureUrl("/login?error")
+                .usernameParameter("username").passwordParameter("password")
+                .and()
+                .logout().logoutSuccessUrl("/login?logout")
+                .and()
+                .exceptionHandling().accessDeniedHandler(myAccessDeniedHandler);
 
 //        http.authorizeRequests()
 //                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
